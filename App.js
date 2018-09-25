@@ -27,10 +27,10 @@ export class App extends Component {
           // return null;
       // }
 
-      const time = {
-          start: performance.now(),
-          total: 2000
-      };
+      // const time = {
+      //     start: performance.now(),
+      //     total: 2000
+      // };
 
       const tick = now => {
           // time.elapsed = now - time.start;
