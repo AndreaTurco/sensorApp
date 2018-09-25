@@ -13,12 +13,35 @@ const instructions = Platform.select({
 });
 
 export class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      tickPerSecond: 3,
+    };
+  }
+
   render() {
       const { sensorsFound, Accelerometer, Gyroscope, Magnetometer } = this.props;
       // if (!Accelerometer || !Gyroscope) {
           // One of the sensors is still initializing
           // return null;
       // }
+
+      const time = {
+          start: performance.now(),
+          total: 2000
+      };
+
+      const tick = now => {
+          // time.elapsed = now - time.start;
+          // if (time.elapsed < time.total) {
+            setTimeout(function () {
+                requestAnimationFrame(tick);
+            }, 1000 / this.state.tickPerSecond);
+          // }
+      };
+
+      // requestAnimationFrame(tick);
 
       return (
       <View style={styles.container}>
