@@ -40,7 +40,7 @@ export class App extends Component {
             }, 1000 / this.state.tickPerSecond);
           // }
       };
-
+      
       // requestAnimationFrame(tick);
 
       return (
@@ -50,12 +50,23 @@ export class App extends Component {
         <Text style={styles.instructions}>{instructions}</Text>
 
           <Text style={styles.welcome}>
-              {(sensorsFound["Accelerometer"] &&
-                  `Acceleration has value: ${Accelerometer}`) ||
+              {(sensorsFound["Accelerometer"] && Accelerometer && 
+                  `Acceleration has value: 
+                  time:${Accelerometer.timestamp || 0} 
+                  x:${Accelerometer.x || 0}
+                  y:${Accelerometer.y || 0} 
+                  z:${Accelerometer.z || 0} 
+                  `) ||
               "Acceleration is not available"}
           </Text>
           <Text style={styles.welcome}>
-              {(sensorsFound["Gyroscope"] && `Gyro has value: ${Gyroscope}`) ||
+              {(sensorsFound["Gyroscope"] && Gyroscope &&
+              `Gyro has value: 
+              time:${Gyroscope.timestamp || 0} 
+                  x:${Gyroscope.x || 0}
+                  y:${Gyroscope.y || 0} 
+                  z:${Gyroscope.z || 0} 
+              `) ||
               "Gyro is not available"}
           </Text>
           <Text style={styles.welcome}>
@@ -70,7 +81,7 @@ export class App extends Component {
 
 export default sensors({
     Accelerometer: {
-        updateInterval: 300 // optional
+        updateInterval: 500 // optional
     },
     Gyroscope: true
 })(App);
