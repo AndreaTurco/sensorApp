@@ -70,7 +70,13 @@ export class App extends Component {
               "Gyro is not available"}
           </Text>
           <Text style={styles.welcome}>
-              {(sensorsFound["Magnetometer"] && `Magnetometer has value: ${Magnetometer}`) ||
+              {(sensorsFound["Magnetometer"] && Magnetometer &&
+               `Magnetometer has value:
+               time:${Magnetometer.timestamp || 0} 
+                  x:${Magnetometer.x || 0}
+                  y:${Magnetometer.y || 0} 
+                  z:${Magnetometer.z || 0} 
+               `) ||
               "Magnetometer is not available"}
           </Text>
       </View>
@@ -83,7 +89,12 @@ export default sensors({
     Accelerometer: {
         updateInterval: 500 // optional
     },
-    Gyroscope: true
+    Gyroscope: {
+      updateInterval: 500 // optional
+    },
+    Magnetometer: {
+      updateInterval: 500 // optional
+    },
 })(App);
 
 const styles = StyleSheet.create({
